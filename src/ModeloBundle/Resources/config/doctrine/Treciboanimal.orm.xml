@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Treciboanimal" table="treciboanimal">
+    <indexes>
+      <index name="fki_treciboanimal_ttipoanimal" columns="fkidtipoanimal"/>
+      <index name="idx_treciboanimal_fkidcategoriaanimal" columns="fkidcategoriaanimal"/>
+      <index name="fki_treciboanimal_tespecieanimal" columns="fkidespecieanimal"/>
+      <index name="fki_treciboanimal_tplaza" columns="fkidplaza"/>
+      <index name="fki_treciboanimal_fktusuario" columns="fkidusuariorecaudador"/>
+      <index name="fki_treciboanimal_tsector" columns="fkidsector"/>
+      <index name="idx_treciboanimal_fkidtarifaanimal" columns="fkidtarifaanimal"/>
+    </indexes>
+    <id name="pkidreciboanimal" type="integer" column="pkidreciboanimal">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="treciboanimal_pkidreciboanimal_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="numeroreciboanimal" type="string" column="numeroreciboanimal" length="225" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="valoreciboanimal" type="float" column="valoreciboanimal" precision="10" scale="0" nullable="false"/>
+    <field name="creacionreciboanimal" type="datetime" column="creacionreciboanimal" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="modificacionreciboanimal" type="datetime" column="modificacionreciboanimal" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="edadanimal" type="integer" column="edadanimal" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="caracteristicasanimal" type="string" column="caracteristicasanimal" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="cantidadanimales" type="integer" column="cantidadanimales" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="numeroguiaica" type="string" column="numeroguiaica" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="valortarifa" type="float" column="valortarifa" precision="10" scale="0" nullable="false"/>
+    <field name="nombrecomprador" type="string" column="nombrecomprador" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="identificacioncomprador" type="string" column="identificacioncomprador" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nombrevendedor" type="string" column="nombrevendedor" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="identificacionvendedor" type="string" column="identificacionvendedor" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nombreplaza" type="string" column="nombreplaza" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="reciboanimalactivo" type="boolean" column="reciboanimalactivo" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="nombrecategoriaanimal" type="string" column="nombrecategoriaanimal" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nombretipoanimal" type="string" column="nombretipoanimal" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nombresector" type="string" column="nombresector" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nombreespecieanimal" type="string" column="nombreespecieanimal" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="identificacionrecaudador" type="string" column="identificacionrecaudador" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nombrerecaudador" type="string" column="nombrerecaudador" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="apellidorecaudador" type="string" column="apellidorecaudador" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="fkidcategoriaanimal" target-entity="Tcategoriaanimal" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidcategoriaanimal" referenced-column-name="pkidcategoriaanimal"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidusuariorecaudador" target-entity="Tusuario" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidusuariorecaudador" referenced-column-name="pkidusuario"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidespecieanimal" target-entity="Tespecieanimal" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidespecieanimal" referenced-column-name="pkidespecieanimal"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidplaza" target-entity="Tplaza" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidplaza" referenced-column-name="pkidplaza"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidsector" target-entity="Tsector" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidsector" referenced-column-name="pkidsector"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidtarifaanimal" target-entity="Ttarifaanimal" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidtarifaanimal" referenced-column-name="pkidtarifaanimal"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidtipoanimal" target-entity="Ttipoanimal" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidtipoanimal" referenced-column-name="pkidtipoanimal"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

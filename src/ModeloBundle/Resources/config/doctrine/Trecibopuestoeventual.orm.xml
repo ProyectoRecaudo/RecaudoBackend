@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Trecibopuestoeventual" table="trecibopuestoeventual">
+    <indexes>
+      <index name="fki_trecibopuestoeventual_tsector" columns="fkidsector"/>
+      <index name="fki_trecibopuestoeventual_fktusuario" columns="fkidusuariorecaudador"/>
+      <index name="idx_trecibopuestoeventual_fkidtarifapuestoeventual" columns="fkidtarifapuestoeventual"/>
+      <index name="fki_trecibopuestoeventual_tplaza" columns="fkidplaza"/>
+    </indexes>
+    <id name="pkidrecibopuestoeventual" type="integer" column="pkidrecibopuestoeventual">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="trecibopuestoeventual_pkidrecibopuestoeventual_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="numerorecibopuestoeventual" type="string" column="numerorecibopuestoeventual" length="225" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="valorecibopuestoeventual" type="float" column="valorecibopuestoeventual" precision="10" scale="0" nullable="false"/>
+    <field name="creacionrecibopuestoeventual" type="datetime" column="creacionrecibopuestoeventual" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="modificacionrecibopuestoeventual" type="datetime" column="modificacionrecibopuestoeventual" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="identificacionterceropuestoeventual" type="string" column="identificacionterceropuestoeventual" length="225" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="valortarifa" type="float" column="valortarifa" precision="10" scale="0" nullable="true"/>
+    <field name="nombreplaza" type="string" column="nombreplaza" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nombreterceropuestoeventual" type="string" column="nombreterceropuestoeventual" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="recibopuestoeventualactivo" type="boolean" column="recibopuestoeventualactivo" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="nombresector" type="string" column="nombresector" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="identificacionrecaudador" type="string" column="identificacionrecaudador" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nombrerecaudador" type="string" column="nombrerecaudador" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="apellidorecaudador" type="string" column="apellidorecaudador" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="fkidtarifapuestoeventual" target-entity="Ttarifapuestoeventual" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidtarifapuestoeventual" referenced-column-name="pkidtarifapuestoeventual"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidusuariorecaudador" target-entity="Tusuario" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidusuariorecaudador" referenced-column-name="pkidusuario"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidplaza" target-entity="Tplaza" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidplaza" referenced-column-name="pkidplaza"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidsector" target-entity="Tsector" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidsector" referenced-column-name="pkidsector"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

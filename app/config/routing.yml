@@ -1,0 +1,380 @@
+
+administracion:
+    resource: "@AdministracionBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+tusuario_administracion:
+    resource: "@AdministracionBundle/Controller/TusuarioController.php"
+    type:     annotation
+    prefix:   /user
+    methods: POST
+
+tplaza_administracion:
+    resource: "@AdministracionBundle/Controller/TplazaController.php"
+    type:     annotation
+    prefix:   /plaza
+    methods: POST     
+
+ttiporecaudo_administracion:
+    resource: "@AdministracionBundle/Controller/TtiporecaudoController.php"
+    type:     annotation
+    prefix:   /tiporecaudo
+    methods: POST
+
+ttiposector_administracion:
+    resource: "@AdministracionBundle/Controller/TtiposectorController.php"
+    type:     annotation
+    prefix:   /tiposector
+    methods: POST    
+
+tmodulo_administracion:
+    resource: "@AdministracionBundle/Controller/TmoduloController.php"
+    type:     annotation
+    prefix:   /modulo
+    methods: POST   
+    
+trol_administracion:
+    resource: "@AdministracionBundle/Controller/TrolController.php"
+    type:     annotation
+    prefix:   /rol
+    methods: POST
+    
+usuario_active:
+    resource: "@AdministracionBundle/Controller/UsuarioactiveController.php"
+    type:     annotation
+    prefix:   /active
+    methods: POST
+    
+export:
+    resource: "@AdministracionBundle/Controller/ExportController.php"
+    type:     annotation
+    prefix:   /export
+    methods: POST
+    
+tsector_administracion:
+    resource: "@AdministracionBundle/Controller/TsectorController.php"
+    type:     annotation
+    prefix:   /sector
+    methods: POST   
+
+tpuerta_administracion:
+    resource: "@AdministracionBundle/Controller/TpuertaController.php"
+    type:     annotation
+    prefix:   /puerta
+    methods: POST 
+    
+ttipopuesto_administracion:
+    resource: "@AdministracionBundle/Controller/TtipopuestoController.php"
+    type:     annotation
+    prefix:   /tipopuesto
+    methods: POST 
+    
+testadoinfraestructura_administracion:
+    resource: "@AdministracionBundle/Controller/TestadoinfraestructuraController.php"
+    type:     annotation
+    prefix:   /estadoinfraestructura
+    methods: POST
+
+tactividadcomercial_administracion:
+    resource: "@AdministracionBundle/Controller/TactividadcomercialController.php"
+    type:     annotation
+    prefix:   /actividadcomercial
+    methods: POST     
+    
+ttipovehiculo_administracion:
+    resource: "@AdministracionBundle/Controller/TtipovehiculoController.php"
+    type:     annotation
+    prefix:   /tipovehiculo
+    methods: POST
+
+ttipoparqueadero_administracion:
+    resource: "@AdministracionBundle/Controller/TtipoparqueaderoController.php"
+    type:     annotation
+    prefix:   /tipoparqueadero
+    methods: POST
+    
+tpuesto_administracion:
+    resource: "@AdministracionBundle/Controller/TpuestoController.php"
+    type:     annotation
+    prefix:   /puesto
+    methods: POST   
+
+tconfiguracion_administracion:
+    resource: "@AdministracionBundle/Controller/TconfiguracionController.php"
+    type:     annotation
+    prefix:   /configuracion
+    methods: POST      
+
+tcategoriaanimal_administracion:
+    resource: "@AdministracionBundle/Controller/TcategoriaanimalController.php"
+    type:     annotation
+    prefix:   /categoriaanimal
+    methods: POST
+     
+ttarifapuestoeventual_administracion:
+    resource: "@AdministracionBundle/Controller/TtarifapuestoeventualController.php"
+    type:     annotation
+    prefix:   /tarifapuestoeventual
+    methods: POST
+
+ttarifapesaje_administracion:
+    resource: "@AdministracionBundle/Controller/TtarifapesajeController.php"
+    type:     annotation
+    prefix:   /tarifapesaje
+    methods: POST
+    
+ttarifaparqueadero_administracion:
+    resource: "@AdministracionBundle/Controller/TtarifaparqueaderoController.php"
+    type:     annotation
+    prefix:   /tarifaparqueadero
+    methods: POST
+    
+ttarifapuesto_administracion:
+    resource: "@AdministracionBundle/Controller/TtarifapuestoController.php"
+    type:     annotation
+    prefix:   /tarifapuesto
+    methods: POST
+
+ttarifaanimal_administracion:
+    resource: "@AdministracionBundle/Controller/TtarifaanimalController.php"
+    type:     annotation
+    prefix:   /tarifaanimal
+    methods: POST  
+
+ttarifavehiculo_administracion:
+    resource: "@AdministracionBundle/Controller/TtarifavehiculoController.php"
+    type:     annotation
+    prefix:   /tarifavehiculo
+    methods: POST 
+    
+ttarifainteres_administracion:
+    resource: "@AdministracionBundle/Controller/TtarifainteresController.php"
+    type:     annotation
+    prefix:   /tarifainteres
+    methods: POST  
+    
+tacuerdo_administracion:
+    resource: "@AdministracionBundle/Controller/TacuerdoController.php"
+    type:     annotation
+    prefix:   /acuerdo
+    methods: POST
+
+asignaciondependiente_administracion:
+    resource: "@SeguridadBundle/Services/Asignaciondependiente.php"
+    type:     annotation
+    prefix:   /asignaciondependiente
+    methods: POST   
+
+tasignacionpuesto_administracion:
+    resource: "@AdministracionBundle/Controller/TasignacionpuestoController.php"
+    type:     annotation
+    prefix:   /asignacionpuesto
+    methods: POST
+    
+paginador_administracion:
+    resource: "@AdministracionBundle/Controller/PaginadorController.php"
+    type:     annotation
+    prefix:   /paginador
+    methods: POST 
+    
+reporterecibopuestoeventual_administracion:
+    resource: "@AdministracionBundle/Controller/ReporterecibopuestoeventualController.php"
+    type:     annotation
+    prefix:   /reporterecibopuestoeventual
+    methods: POST   
+
+reporteauditoria_administracion:
+    resource: "@AdministracionBundle/Controller/ReporteauditoriaController.php"
+    type:     annotation
+    prefix:   /reporteauditoria
+    methods: POST  
+
+reportereciboanimal_administracion:
+    resource: "@AdministracionBundle/Controller/ReportereciboanimalController.php"
+    type:     annotation
+    prefix:   /reportereciboanimal
+    methods: POST  
+
+reporterecibovehiculo_administracion:
+    resource: "@AdministracionBundle/Controller/ReporterecibovehiculoController.php"
+    type:     annotation
+    prefix:   /reporterecibovehiculo
+    methods: POST  
+
+reportecartera_administracion:
+    resource: "@AdministracionBundle/Controller/ReportecarteraController.php"
+    type:     annotation
+    prefix:   /reportecartera
+    methods: POST        
+    
+validationtoken:
+    resource: "@AdministracionBundle/Controller/ValidationtokenController.php"
+    type:     annotation
+    prefix:   /validationtoken
+    methods: POST  
+
+tincremento_administracion:
+    resource: "@AdministracionBundle/Controller/TincrementoController.php"
+    type:     annotation
+    prefix:   /incremento
+    methods: POST
+    
+recaudo:
+    resource: "@AdministracionBundle/Controller/RecaudoController.php"
+    type:     annotation
+    prefix:   /recaudo
+    methods: POST
+    
+tproceso_administracion:
+    resource: "@AdministracionBundle/Controller/TprocesoController.php"
+    type:     annotation
+    prefix:   /proceso
+    methods: POST
+    
+tmulta_administracion:
+    resource: "@AdministracionBundle/Controller/TmultaController.php"
+    type:     annotation
+    prefix:   /multa
+    methods: POST      
+
+today:
+    resource: "@SeguridadBundle/Services/Auditoria.php"
+    type:     annotation
+    prefix:   /
+    methods: POST
+
+tmeta_administracion:
+    resource: "@AdministracionBundle/Controller/TmetaController.php"
+    type:     annotation
+    prefix:   /meta
+    methods: POST        
+    
+trecibopuestoeventual_administracion:
+    resource: "@AdministracionBundle/Controller/TrecibopuestoeventualController.php"
+    type:     annotation
+    prefix:   /recibopuestoeventual
+
+    methods: POST 
+
+trecibopuesto_administracion:
+    resource: "@AdministracionBundle/Controller/TrecibopuestoController.php"
+    type:     annotation
+    prefix:   /recibopuesto
+    methods: POST   
+
+reportefactura_administracion:
+    resource: "@AdministracionBundle/Controller/ReportefacturaController.php"
+    type:     annotation
+    prefix:   /Reportefactura
+    methods: POST    
+
+ciboanimal_administracion:
+    resource: "@AdministracionBundle/Controller/TreciboanimalController.php"
+    type:     annotation
+    prefix:   /reciboanimal
+    methods: POST  
+
+treciboparqueadero_administracion:
+    resource: "@AdministracionBundle/Controller/TreciboparqueaderoController.php"
+    type:     annotation
+    prefix:   /reciboparqueadero
+    methods: POST 
+
+trecibopesaje_administracion:
+    resource: "@AdministracionBundle/Controller/TrecibopesajeController.php"
+    type:     annotation
+    prefix:   /recibopesaje
+    methods: POST 
+
+trecibovehiculo_administracion:
+    resource: "@AdministracionBundle/Controller/TrecibovehiculoController.php"
+    type:     annotation
+    prefix:   /recibovehiculo
+    methods: POST  
+
+tcenso_administracion:
+    resource: "@AdministracionBundle/Controller/TcensoController.php"
+    type:     annotation
+    prefix:   /censo
+    methods: POST    
+      
+tcierremes_administracion:
+    resource: "@AdministracionBundle/Controller/TcierremesController.php"
+    type:     annotation
+    prefix:   /cierremes
+    methods: POST      
+
+tcierrediario_administracion:
+    resource: "@AdministracionBundle/Controller/TcierrediarioController.php"
+    type:     annotation
+    prefix:   /cierrediario
+    methods: POST      
+
+#Rutas sandra
+tbeneficiario_administracion:
+    resource: "@AdministracionBundle/Controller/TbeneficiarioController.php"
+    type:     annotation
+    prefix:   /beneficiario
+    methods: POST  
+    
+
+tparqueadero_administracion:
+    resource: "@AdministracionBundle/Controller/TparqueaderoController.php"
+    type:     annotation
+    prefix:   /parqueadero
+    methods: POST  
+
+tequipo_administracion:
+    resource: "@AdministracionBundle/Controller/TequipoController.php"
+    type:     annotation
+    prefix:   /equipo
+    methods: POST  
+
+tabogado_administracion:
+    resource: "@AdministracionBundle/Controller/TabogadoController.php"
+    type:     annotation
+    prefix:   /abogado
+    methods: POST  
+
+tzona_administracion:
+    resource: "@AdministracionBundle/Controller/TzonaController.php"
+    type:     annotation
+    prefix:   /zona
+    methods: POST  
+
+ttipoanimal_administracion:
+    resource: "@AdministracionBundle/Controller/TtipoanimalController.php"
+    type:     annotation
+    prefix:   /tipoanimal
+    methods: POST    
+
+tespecieanimal_administracion:
+    resource: "@AdministracionBundle/Controller/TespecieanimalController.php"
+    type:     annotation
+    prefix:   /especieanimal
+    methods: POST    
+
+ttipobeneficiario_administracion:
+    resource: "@AdministracionBundle/Controller/TtipobeneficiarioController.php"
+    type:     annotation
+    prefix:   /tipobeneficiario
+    methods: POST  
+#Rutas sandra
+
+seguridad:
+    resource: "@SeguridadBundle/Controller/"
+    type:     annotation
+    prefix:   /
+    methods: POST
+
+modelo:
+    resource: "@ModeloBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+

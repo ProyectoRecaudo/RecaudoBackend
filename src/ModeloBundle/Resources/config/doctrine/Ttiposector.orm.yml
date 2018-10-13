@@ -1,0 +1,45 @@
+ModeloBundle\Entity\Ttiposector:
+    type: entity
+    table: ttiposector
+    id:
+        pkidtiposector:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        codigotiposector:
+            type: string
+            nullable: true
+            length: 225
+            options:
+                fixed: false
+        nombretiposector:
+            type: string
+            nullable: false
+            length: 225
+            options:
+                fixed: false
+        descripciontiposector:
+            type: string
+            nullable: true
+            length: 225
+            options:
+                fixed: false
+        tiposectoractivo:
+            type: boolean
+            nullable: false
+        creaciontiposector:
+            type: datetimetz
+            nullable: false
+            options:
+                default: now()
+        modificaciontiposector:
+            type: datetimetz
+            nullable: false
+            options:
+                default: now()
+    lifecycleCallbacks: {  }

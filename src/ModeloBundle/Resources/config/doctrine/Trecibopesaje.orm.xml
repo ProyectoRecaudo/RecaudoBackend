@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Trecibopesaje" table="trecibopesaje">
+    <indexes>
+      <index name="fki_trecibopesaje_fktusuario" columns="fkidusuariorecaudador"/>
+      <index name="fki_trecibopesaje_tcategoriaanimal" columns="fkidcategoriaanimal"/>
+      <index name="fki_trecibopesaje_tplaza" columns="fkidplaza"/>
+      <index name="fki_trecibopesaje_tespecieanimal" columns="fkidespecieanimal"/>
+      <index name="idx_trecibopesaje_fkidtarifapesaje" columns="fkidtarifapesaje"/>
+      <index name="fki_trecibopesaje_ttipoanimal" columns="fkidtipoanimal"/>
+    </indexes>
+    <id name="pkidrecibopesaje" type="integer" column="pkidrecibopesaje">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="trecibopesaje_pkidrecibopesaje_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="numerorecibopesaje" type="string" column="numerorecibopesaje" length="225" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="valorecibopesaje" type="float" column="valorecibopesaje" precision="10" scale="0" nullable="false"/>
+    <field name="pesoanimal" type="float" column="pesoanimal" precision="10" scale="0" nullable="false"/>
+    <field name="creacionrecibopesaje" type="datetime" column="creacionrecibopesaje" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="modificacionrecibopesaje" type="datetime" column="modificacionrecibopesaje" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="valortarifa" type="float" column="valortarifa" precision="10" scale="0" nullable="false"/>
+    <field name="nombreterceropesaje" type="string" column="nombreterceropesaje" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="identificacionterceropesaje" type="string" column="identificacionterceropesaje" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nombreplaza" type="string" column="nombreplaza" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="recibopesajeactivo" type="boolean" column="recibopesajeactivo" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="nombrecategoriaanimal" type="string" column="nombrecategoriaanimal" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nombretipoanimal" type="string" column="nombretipoanimal" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nombreespecieanimal" type="string" column="nombreespecieanimal" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="identificacionrecaudador" type="string" column="identificacionrecaudador" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nombrerecaudador" type="string" column="nombrerecaudador" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="apellidorecaudador" type="string" column="apellidorecaudador" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="fkidusuariorecaudador" target-entity="Tusuario" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidusuariorecaudador" referenced-column-name="pkidusuario"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidcategoriaanimal" target-entity="Tcategoriaanimal" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidcategoriaanimal" referenced-column-name="pkidcategoriaanimal"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidespecieanimal" target-entity="Tespecieanimal" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidespecieanimal" referenced-column-name="pkidespecieanimal"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidplaza" target-entity="Tplaza" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidplaza" referenced-column-name="pkidplaza"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidtarifapesaje" target-entity="Ttarifapesaje" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidtarifapesaje" referenced-column-name="pkidtarifapesaje"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidtipoanimal" target-entity="Ttipoanimal" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidtipoanimal" referenced-column-name="pkidtipoanimal"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

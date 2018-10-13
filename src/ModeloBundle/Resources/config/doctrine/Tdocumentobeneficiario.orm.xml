@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Tdocumentobeneficiario" table="tdocumentobeneficiario">
+    <indexes>
+      <index name="idx_tdocumentobeneficiario_fkidbeneficiario" columns="fkidbeneficiario"/>
+    </indexes>
+    <id name="pkiddocumento" type="integer" column="pkiddocumento">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="tdocumentobeneficiario_pkiddocumento_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="nombredocumento" type="string" column="nombredocumento" length="225" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="descripciondocumento" type="text" column="descripciondocumento" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="rutadocumento" type="text" column="rutadocumento" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="creaciondocumento" type="datetime" column="creaciondocumento" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="modificaciondocumento" type="datetime" column="modificaciondocumento" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <many-to-one field="fkidbeneficiario" target-entity="Tbeneficiario" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidbeneficiario" referenced-column-name="pkidbeneficiario"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

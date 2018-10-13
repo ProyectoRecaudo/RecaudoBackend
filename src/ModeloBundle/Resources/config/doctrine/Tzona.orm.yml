@@ -1,0 +1,69 @@
+ModeloBundle\Entity\Tzona:
+    type: entity
+    table: tzona
+    indexes:
+        fki_fkzonaplaza:
+            columns:
+                - fkidplaza
+        fki_fkzonausuario:
+            columns:
+                - fkidusuario
+    id:
+        pkidzona:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        codigozona:
+            type: string
+            nullable: true
+            length: 225
+            options:
+                fixed: false
+        nombrezona:
+            type: string
+            nullable: false
+            length: 225
+            options:
+                fixed: false
+        zonaactivo:
+            type: boolean
+            nullable: false
+            options:
+                default: true
+        creacionzona:
+            type: datetime
+            nullable: false
+            options:
+                default: now()
+        modificacionzona:
+            type: datetime
+            nullable: false
+            options:
+                default: now()
+    manyToOne:
+        fkidplaza:
+            targetEntity: Tplaza
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fkidplaza:
+                    referencedColumnName: pkidplaza
+            orphanRemoval: false
+        fkidusuario:
+            targetEntity: Tusuario
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fkidusuario:
+                    referencedColumnName: pkidusuario
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

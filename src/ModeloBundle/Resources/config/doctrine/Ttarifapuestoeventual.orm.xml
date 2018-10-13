@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Ttarifapuestoeventual" table="ttarifapuestoeventual">
+    <indexes>
+      <index name="idx_ttarifapuestoeventual_fkidplaza" columns="fkidplaza"/>
+    </indexes>
+    <id name="pkidtarifapuestoeventual" type="integer" column="pkidtarifapuestoeventual">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="ttarifapuestoeventual_pkidtarifapuestoeventual_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="valortarifapuestoeventual" type="float" column="valortarifapuestoeventual" precision="10" scale="0" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="descripciontarifapuestoeventual" type="string" column="descripciontarifapuestoeventual" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="numeroresoluciontarifapuestoeventual" type="string" column="numeroresoluciontarifapuestoeventual" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="documentoresoluciontarifapuestoeventual" type="text" column="documentoresoluciontarifapuestoeventual" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="craciontarifapuestoeventual" type="datetime" column="craciontarifapuestoeventual" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="modificaciontarifapuestoeventual" type="datetime" column="modificaciontarifapuestoeventual" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="tarifapuestoeventualactivo" type="boolean" column="tarifapuestoeventualactivo" nullable="true">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="valorincrementoporcentual" type="float" column="valorincrementoporcentual" precision="10" scale="0" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="fechainicio" type="datetime" column="fechainicio" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="fechafin" type="datetime" column="fechafin" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <many-to-one field="fkidplaza" target-entity="Tplaza" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidplaza" referenced-column-name="pkidplaza"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Ttarifaanimal" table="ttarifaanimal">
+    <indexes>
+      <index name="idx_ttarifaanimal_fkidplaza" columns="fkidplaza"/>
+      <index name="idx_ttarifaanimal_fkidtipoanimal" columns="fkidtipoanimal"/>
+    </indexes>
+    <id name="pkidtarifaanimal" type="integer" column="pkidtarifaanimal">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="ttarifaanimal_pkidtarifaanimal_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="valortarifaanimal" type="float" column="valortarifaanimal" precision="10" scale="0" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="descripciontarifaanimal" type="string" column="descripciontarifaanimal" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="numeroresoluciontarifaanimal" type="string" column="numeroresoluciontarifaanimal" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="documentoresoluciontarifaanimal" type="text" column="documentoresoluciontarifaanimal" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="craciontarifaanimal" type="datetime" column="craciontarifaanimal" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="modificaciontarifaanimal" type="datetime" column="modificaciontarifaanimal" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="tarifaanimalactivo" type="boolean" column="tarifaanimalactivo" nullable="true">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="valorincrementoporcentual" type="float" column="valorincrementoporcentual" precision="10" scale="0" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="fechainicio" type="datetime" column="fechainicio" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="fechafin" type="datetime" column="fechafin" nullable="true"/>
+    <many-to-one field="fkidplaza" target-entity="Tplaza" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidplaza" referenced-column-name="pkidplaza"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidtipoanimal" target-entity="Ttipoanimal" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidtipoanimal" referenced-column-name="pkidtipoanimal"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

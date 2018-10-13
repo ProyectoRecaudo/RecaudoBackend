@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Tconfiguracion" table="tconfiguracion">
+    <id name="pkidconfiguracion" type="integer" column="pkidconfiguracion">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="tconfiguracion_pkidconfiguracion_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="claveconfiguracion" type="string" column="claveconfiguracion" length="225" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="valorconfiguracion" type="string" column="valorconfiguracion" length="225" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="fechaconfiguracion" type="datetime" column="fechaconfiguracion" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="valoranteriorconfiguracion" type="string" column="valoranteriorconfiguracion" length="225" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Tparqueadero" table="tparqueadero">
+    <indexes>
+      <index name="idx_tparqueadero_fkidtipoparqueadero" columns="fkidtipoparqueadero"/>
+      <index name="idx_tparqueadero_fkidplaza" columns="fkidplaza"/>
+    </indexes>
+    <id name="pkidparqueadero" type="integer" column="pkidparqueadero">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="tparqueadero_pkidparqueadero_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="codigoparqueadero" type="string" column="codigoparqueadero" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="numeroparqueadero" type="string" column="numeroparqueadero" length="225" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="parqueaderoactivo" type="boolean" column="parqueaderoactivo" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="creacionparqueadero" type="datetime" column="creacionparqueadero" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="modificacionparqueadero" type="datetime" column="modificacionparqueadero" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <many-to-one field="fkidplaza" target-entity="Tplaza" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidplaza" referenced-column-name="pkidplaza"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidtipoparqueadero" target-entity="Ttipoparqueadero" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidtipoparqueadero" referenced-column-name="pkidtipoparqueadero"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Tproceso" table="tproceso">
+    <indexes>
+      <index name="fki_tproceso_tabogado" columns="fkidabogado"/>
+      <index name="fki_tproceso_tasignacionpuesto" columns="fkidasignacionpuesto"/>
+    </indexes>
+    <id name="pkidproceso" type="integer" column="pkidproceso">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="tproceso_pkidproceso_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="procesoactivo" type="boolean" column="procesoactivo" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="creacionproceso" type="datetime" column="creacionproceso" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="modificacionproceso" type="datetime" column="modificacionproceso" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <many-to-one field="fkidabogado" target-entity="Tabogado" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidabogado" referenced-column-name="pkidabogado"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidasignacionpuesto" target-entity="Tasignacionpuesto" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidasignacionpuesto" referenced-column-name="pkidasignacionpuesto"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

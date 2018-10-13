@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Tpuerta" table="tpuerta">
+    <indexes>
+      <index name="idx_tpuerta_fkidplaza" columns="fkidplaza"/>
+    </indexes>
+    <id name="pkidpuerta" type="integer" column="pkidpuerta">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="tpuerta_pkidpuerta_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="codigopuerta" type="string" column="codigopuerta" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nombrepuerta" type="string" column="nombrepuerta" length="225" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="creacionpuerta" type="datetime" column="creacionpuerta" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="modificacionpuerta" type="datetime" column="modificacionpuerta" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="puertaactivo" type="boolean" column="puertaactivo" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <many-to-one field="fkidplaza" target-entity="Tplaza" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidplaza" referenced-column-name="pkidplaza"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

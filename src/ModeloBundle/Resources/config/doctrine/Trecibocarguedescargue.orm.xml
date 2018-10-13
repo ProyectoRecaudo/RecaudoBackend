@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Trecibocarguedescargue" table="trecibocarguedescargue">
+    <indexes>
+      <index name="idx_trecibocarguedescargue_fkidtarifacarguedescargue" columns="fkidtarifacarguedescargue"/>
+    </indexes>
+    <id name="pkidrecibocarguedescargue" type="integer" column="pkidrecibocarguedescargue">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="trecibocarguedescargue_pkidrecibocarguedescargue_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="numerorecibocarguedescargue" type="string" column="numerorecibocarguedescargue" length="225" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="numeroplacacarguedescargue" type="string" column="numeroplacacarguedescargue" length="225" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="valorecibocarguedescargue" type="float" column="valorecibocarguedescargue" precision="10" scale="0" nullable="false"/>
+    <field name="creacionrecibocarguedescargue" type="datetime" column="creacionrecibocarguedescargue" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="modificacionrecibocarguedescargue" type="datetime" column="modificacionrecibocarguedescargue" nullable="false"/>
+    <many-to-one field="fkidtarifacarguedescargue" target-entity="Ttarifacarguedescargue" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidtarifacarguedescargue" referenced-column-name="pkidtarifacarguedescargue"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Tcartera" table="tcartera">
+    <indexes>
+      <index name="idx_tcartera_fkidbeneficiario" columns="fkidbeneficiario"/>
+      <index name="idx_tcartera_fkidcriticidad" columns="fkidalerta"/>
+    </indexes>
+    <id name="pkidcartera" type="integer" column="pkidcartera">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="tcartera_pkidcartera_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="mesesdeuda" type="integer" column="mesesdeuda" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="valordeuda" type="float" column="valordeuda" precision="10" scale="0" nullable="false"/>
+    <field name="carteraactiva" type="boolean" column="carteraactiva" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="creacioncartera" type="datetime" column="creacioncartera" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="modificacioncartera" type="datetime" column="modificacioncartera" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <many-to-one field="fkidalerta" target-entity="Talerta" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidalerta" referenced-column-name="pkidalerta"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidbeneficiario" target-entity="Tbeneficiario" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidbeneficiario" referenced-column-name="pkidbeneficiario"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

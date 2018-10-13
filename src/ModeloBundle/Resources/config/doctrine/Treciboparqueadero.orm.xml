@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Treciboparqueadero" table="treciboparqueadero">
+    <indexes>
+      <index name="fki_treciboparqueadero_tparqueadero" columns="fkidparqueadero"/>
+      <index name="fki_treciboparqueadero_ttipoparqueadero" columns="fkidtipoparqueadero"/>
+      <index name="fki_treciboparqueadero_fktusuario" columns="fkidusuariorecaudador"/>
+      <index name="idx_treciboparqueadero_fkidtarifaparqueadero" columns="fkidtarifaparqueadero"/>
+      <index name="fki_treciboparqueadero_tplaza" columns="fkidplaza"/>
+    </indexes>
+    <id name="pkidreciboparqueadero" type="integer" column="pkidreciboparqueadero">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="treciboparqueadero_pkidreciboparqueadero_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="numeroreciboparqueadero" type="string" column="numeroreciboparqueadero" length="225" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="valoreciboparqueadero" type="float" column="valoreciboparqueadero" precision="10" scale="0" nullable="false"/>
+    <field name="creacionreciboparqueadero" type="datetime" column="creacionreciboparqueadero" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="modificacionreciboparqueadero" type="datetime" column="modificacionreciboparqueadero" nullable="false"/>
+    <field name="nombreusuarioparqueadero" type="string" column="nombreusuarioparqueadero" length="225" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="valortarifa" type="float" column="valortarifa" precision="10" scale="0" nullable="false"/>
+    <field name="nombreterceroparqueadero" type="string" column="nombreterceroparqueadero" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="identificacionterceroparqueadero" type="string" column="identificacionterceroparqueadero" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nombreplaza" type="string" column="nombreplaza" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="reciboparqueaderoactivo" type="boolean" column="reciboparqueaderoactivo" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="numeroparqueadero" type="string" column="numeroparqueadero" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nombretipoparqueadero" type="string" column="nombretipoparqueadero" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="identificacionrecaudador" type="string" column="identificacionrecaudador" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nombrerecaudador" type="string" column="nombrerecaudador" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="apellidorecaudador" type="string" column="apellidorecaudador" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="fkidtarifaparqueadero" target-entity="Ttarifaparqueadero" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidtarifaparqueadero" referenced-column-name="pkidtarifaparqueadero"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidusuariorecaudador" target-entity="Tusuario" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidusuariorecaudador" referenced-column-name="pkidusuario"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidparqueadero" target-entity="Tparqueadero" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidparqueadero" referenced-column-name="pkidparqueadero"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidplaza" target-entity="Tplaza" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidplaza" referenced-column-name="pkidplaza"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidtipoparqueadero" target-entity="Ttipoparqueadero" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidtipoparqueadero" referenced-column-name="pkidtipoparqueadero"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

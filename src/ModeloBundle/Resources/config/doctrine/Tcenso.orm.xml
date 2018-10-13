@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Tcenso" table="tcenso">
+    <indexes>
+      <index name="fki_tcenso_tpuesto" columns="fkidpuesto"/>
+      <index name="fki_tcenso_tbeneficiario" columns="fkidbeneficiario"/>
+      <index name="fki_tcenso_tplaza" columns="fkidplaza"/>
+      <index name="fki_tcenso_tsector" columns="fkidsector"/>
+    </indexes>
+    <id name="pkidcenso" type="integer" column="pkidcenso">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="tcenso_pkidcenso_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="nombres" type="string" column="nombres" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="apellidos" type="string" column="apellidos" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="tipodocumento" type="string" column="tipodocumento" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="genero" type="string" column="genero" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="relacionpuesto" type="string" column="relacionpuesto" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="identificacion" type="string" column="identificacion" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nombrebeneficiario" type="string" column="nombrebeneficiario" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="numeropuesto" type="string" column="numeropuesto" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="edad" type="string" column="edad" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="niveleducativo" type="string" column="niveleducativo" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="estadocivil" type="string" column="estadocivil" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="numeropersonasacargo" type="string" column="numeropersonasacargo" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="grupofamiliar" type="string" column="grupofamiliar" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="personascondiscapacidad" type="string" column="personascondiscapacidad" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="gruposocialperteneciente" type="string" column="gruposocialperteneciente" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="procedencia" type="string" column="procedencia" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="personasadictasasustancias" type="string" column="personasadictasasustancias" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="tiempopermanenciapuesto" type="string" column="tiempopermanenciapuesto" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="ingresos" type="float" column="ingresos" precision="10" scale="0" nullable="true"/>
+    <field name="ocupacionlocal" type="string" column="ocupacionlocal" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="infraestructura" type="string" column="infraestructura" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="tipovivienda" type="string" column="tipovivienda" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="prestacionserviciomercado" type="string" column="prestacionserviciomercado" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="direccion" type="string" column="direccion" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="telefono" type="string" column="telefono" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="email" type="string" column="email" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nombreplaza" type="string" column="nombreplaza" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nombresector" type="string" column="nombresector" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="creacioncenso" type="datetime" column="creacioncenso" nullable="true"/>
+    <field name="modificacioncenso" type="datetime" column="modificacioncenso" nullable="true"/>
+    <field name="fechanacimiento" type="datetime" column="fechanacimiento" nullable="true"/>
+    <many-to-one field="fkidbeneficiario" target-entity="Tbeneficiario" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidbeneficiario" referenced-column-name="pkidbeneficiario"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidplaza" target-entity="Tplaza" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidplaza" referenced-column-name="pkidplaza"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidpuesto" target-entity="Tpuesto" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidpuesto" referenced-column-name="pkidpuesto"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidsector" target-entity="Tsector" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidsector" referenced-column-name="pkidsector"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

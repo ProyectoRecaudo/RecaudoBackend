@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Tincrementoporcentual" table="tincrementoporcentual">
+    <indexes>
+      <index name="idx_tincrementoporcentual_fkidplaza" columns="fkidplaza"/>
+    </indexes>
+    <id name="pkidincremento" type="integer" column="pkidincremento">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="tincrementoporcentual_pkidincremento_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="valorincremento" type="float" column="valorincremento" precision="10" scale="0" nullable="false"/>
+    <field name="resolucionincremento" type="string" column="resolucionincremento" length="225" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="documentoresolucionincremento" type="text" column="documentoresolucionincremento" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="creacionincremento" type="datetime" column="creacionincremento" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="modificacionincremento" type="datetime" column="modificacionincremento" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="incrementoactivo" type="boolean" column="incrementoactivo" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <many-to-one field="fkidplaza" target-entity="Tplaza" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidplaza" referenced-column-name="pkidplaza"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

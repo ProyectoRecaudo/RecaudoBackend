@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Tplaza" table="tplaza">
+    <id name="pkidplaza" type="integer" column="pkidplaza">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="tplaza_pkidplaza_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="codigoplaza" type="string" column="codigoplaza" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nombreplaza" type="string" column="nombreplaza" length="225" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="plazaactivo" type="boolean" column="plazaactivo" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="creacionplaza" type="datetime" column="creacionplaza" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="modificacionplaza" type="datetime" column="modificacionplaza" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

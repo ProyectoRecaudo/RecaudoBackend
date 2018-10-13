@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Tauditoria" table="tauditoria">
+    <id name="pkidauditoria" type="bigint" column="pkidauditoria">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="tauditoria_pkidauditoria_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="fkidusuario" type="integer" column="fkidusuario" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="nombreusuario" type="string" column="nombreusuario" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">debe contener el nombre completo del usuario (nombres y apellidos)</option>
+      </options>
+    </field>
+    <field name="identificacionusuario" type="string" column="identificacionusuario" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">número de identificación</option>
+      </options>
+    </field>
+    <field name="tabla" type="string" column="tabla" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">el nombre de la tabla que se afectó con la acción sin el prefijo (ej. si se afectó tusuario debe decir usuario)</option>
+      </options>
+    </field>
+    <field name="valoresrelevantes" type="string" column="valoresrelevantes" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">se deben regitrar el o los valores relevantes de cada tabla siempre que se haga una acción, por ejemplo, de la tabla tusuario los relevantes son identifación y su nombre.&#13;
+&#13;
+la sintaxis es: campo1: valor1; campo2: valor2;&#13;
+ej. identificacón: 485425200; nombre: fulanito pérez;</option>
+      </options>
+    </field>
+    <field name="accion" type="string" column="accion" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">la acción u operación es aquella que se realiza y afecta a la tabla, las  posibles operaciones son:&#13;
+&#13;
+- creación&#13;
+- edición&#13;
+- eliminación</option>
+      </options>
+    </field>
+    <field name="creacionauditoria" type="datetime" column="creacionauditoria" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="pkidelemento" type="bigint" column="pkidelemento" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">el id del elemento afectado</option>
+      </options>
+    </field>
+    <field name="origenauditoria" type="string" column="origenauditoria" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">el origen puede ser:&#13;
+&#13;
+- web&#13;
+- móvil</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

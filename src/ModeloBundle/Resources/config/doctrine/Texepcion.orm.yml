@@ -1,0 +1,73 @@
+ModeloBundle\Entity\Texepcion:
+    type: entity
+    table: texepcion
+    id:
+        pkidexepcion:
+            type: bigint
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        fkidusuario:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        nombreusuario:
+            type: string
+            nullable: true
+            length: null
+            options:
+                fixed: false
+                comment: "debe contener el nombre del usuario completo.\r\n"
+        modulo:
+            type: string
+            nullable: true
+            length: null
+            options:
+                fixed: false
+                comment: 'el nombre del módulo'
+        metodo:
+            type: string
+            nullable: true
+            length: null
+            options:
+                fixed: false
+                comment: 'nombre del método o función donde se capturó la excepción'
+        mensaje:
+            type: string
+            nullable: true
+            length: null
+            options:
+                fixed: false
+                comment: 'el mensaje de la excepción'
+        tipoexcepcion:
+            type: string
+            nullable: true
+            length: null
+            options:
+                fixed: false
+                comment: 'el tipo o la clase de excepcion'
+        pila:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+                comment: 'la pila o el stack de la excepción'
+        origen:
+            type: string
+            nullable: true
+            length: null
+            options:
+                fixed: false
+                comment: "el origen de la excepción:\r\n\r\n- web\r\n- móvil"
+        creacionexcepcion:
+            type: datetime
+            nullable: false
+            options:
+                default: now()
+    lifecycleCallbacks: {  }

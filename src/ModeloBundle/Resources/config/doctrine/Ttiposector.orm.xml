@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Ttiposector" table="ttiposector">
+    <id name="pkidtiposector" type="integer" column="pkidtiposector">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="ttiposector_pkidtiposector_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="codigotiposector" type="string" column="codigotiposector" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nombretiposector" type="string" column="nombretiposector" length="225" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="descripciontiposector" type="string" column="descripciontiposector" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="tiposectoractivo" type="boolean" column="tiposectoractivo" nullable="false"/>
+    <field name="creaciontiposector" type="datetimetz" column="creaciontiposector" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="modificaciontiposector" type="datetimetz" column="modificaciontiposector" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Trecibovehiculo" table="trecibovehiculo">
+    <indexes>
+      <index name="fki_trecibovehiculo_tplaza" columns="fkidplaza"/>
+      <index name="fki_trecibovehiculo_ttipovehiculo" columns="fkidtipovehiculo"/>
+      <index name="idx_trecibovehiculo_fkidtarifavehiculo" columns="fkidtarifavehiculo"/>
+      <index name="fki_trecibovehiculo_fktusuario" columns="fkidusuariorecaudador"/>
+      <index name="fki_trecibovehiculo_tpuerta" columns="fkidpuerta"/>
+    </indexes>
+    <id name="pkidrecibovehiculo" type="integer" column="pkidrecibovehiculo">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="trecibovehiculo_pkidrecibovehiculo_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="numerorecibovehiculo" type="string" column="numerorecibovehiculo" length="225" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="numeroplaca" type="string" column="numeroplaca" length="225" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="valorecibovehiculo" type="float" column="valorecibovehiculo" precision="10" scale="0" nullable="false"/>
+    <field name="creacionrecibovehiculo" type="datetime" column="creacionrecibovehiculo" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="modificacionrecibovehiculo" type="datetime" column="modificacionrecibovehiculo" nullable="false"/>
+    <field name="valortarifa" type="float" column="valortarifa" precision="10" scale="0" nullable="false"/>
+    <field name="nombretercerovehiculo" type="string" column="nombretercerovehiculo" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="identificaciontercerovehiculo" type="string" column="identificaciontercerovehiculo" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nombreplaza" type="string" column="nombreplaza" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="recibovehiculoactivo" type="boolean" column="recibovehiculoactivo" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="nombretipovehiculo" type="string" column="nombretipovehiculo" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="identificacionrecaudador" type="string" column="identificacionrecaudador" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nombrerecaudador" type="string" column="nombrerecaudador" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="apellidorecaudador" type="string" column="apellidorecaudador" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nombrepuerta" type="string" column="nombrepuerta" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="fkidtarifavehiculo" target-entity="Ttarifavehiculo" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidtarifavehiculo" referenced-column-name="pkidtarifavehiculo"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidusuariorecaudador" target-entity="Tusuario" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidusuariorecaudador" referenced-column-name="pkidusuario"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidplaza" target-entity="Tplaza" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidplaza" referenced-column-name="pkidplaza"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidpuerta" target-entity="Tpuerta" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidpuerta" referenced-column-name="pkidpuerta"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidtipovehiculo" target-entity="Ttipovehiculo" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidtipovehiculo" referenced-column-name="pkidtipovehiculo"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

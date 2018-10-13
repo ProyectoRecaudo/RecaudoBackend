@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Trecaudopuesto" table="trecaudopuesto">
+    <indexes>
+      <index name="idx_trecaudopuesto_fkidfactura" columns="fkidfactura"/>
+    </indexes>
+    <id name="pkidrecaudopuesto" type="integer" column="pkidrecaudopuesto">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="trecaudopuesto_pkidrecaudopuesto_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="recaudopuestopagado" type="boolean" column="recaudopuestopagado" nullable="false">
+      <options>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="creacionrecaudo" type="datetime" column="creacionrecaudo" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="modificacionrecaudo" type="datetime" column="modificacionrecaudo" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <many-to-one field="fkidfactura" target-entity="Tfactura" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidfactura" referenced-column-name="idfactura"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Tmulta" table="tmulta">
+    <indexes>
+      <index name="idx_tmulta_fkidasignacionpuesto" columns="fkidasignacionpuesto"/>
+    </indexes>
+    <id name="pkidmulta" type="integer" column="pkidmulta">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="tmulta_pkidmulta_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="valormulta" type="float" column="valormulta" precision="10" scale="0" nullable="false"/>
+    <field name="resolucionmulta" type="string" column="resolucionmulta" length="225" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="documentomulta" type="text" column="documentomulta" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="multaactivo" type="boolean" column="multaactivo" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="valorcuotamensualmulta" type="float" column="valorcuotamensualmulta" precision="10" scale="0" nullable="true"/>
+    <field name="creacionmulta" type="datetime" column="creacionmulta" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="modificacionmulta" type="datetime" column="modificacionmulta" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="descripcionmulta" type="text" column="descripcionmulta" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="interes" type="float" column="interes" precision="10" scale="0" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="fechapagototal" type="datetime" column="fechapagototal" nullable="true"/>
+    <field name="saldomulta" type="float" column="saldomulta" precision="10" scale="0" nullable="false"/>
+    <many-to-one field="fkidasignacionpuesto" target-entity="Tasignacionpuesto" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidasignacionpuesto" referenced-column-name="pkidasignacionpuesto"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

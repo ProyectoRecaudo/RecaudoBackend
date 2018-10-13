@@ -1,0 +1,6 @@
+services:
+#    seguridad.example:
+#        class: SeguridadBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
+
+    

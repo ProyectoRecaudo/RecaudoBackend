@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Ttipoparqueadero" table="ttipoparqueadero">
+    <id name="pkidtipoparqueadero" type="integer" column="pkidtipoparqueadero">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="ttipoparqueadero_pkidtipoparqueadero_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="codigotipoparqueadero" type="string" column="codigotipoparqueadero" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nombretipoparqueadero" type="string" column="nombretipoparqueadero" length="225" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="descripciontipoparqueadero" type="string" column="descripciontipoparqueadero" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="tipoparqueaderoactivo" type="boolean" column="tipoparqueaderoactivo" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="creaciontipoparqueadero" type="datetime" column="creaciontipoparqueadero" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="modificaciontipoparqueadero" type="datetime" column="modificaciontipoparqueadero" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

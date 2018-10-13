@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Texepcion" table="texepcion">
+    <id name="pkidexepcion" type="bigint" column="pkidexepcion">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="texepcion_pkidexepcion_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="fkidusuario" type="integer" column="fkidusuario" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="nombreusuario" type="string" column="nombreusuario" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">debe contener el nombre del usuario completo.&#13;
+</option>
+      </options>
+    </field>
+    <field name="modulo" type="string" column="modulo" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">el nombre del módulo</option>
+      </options>
+    </field>
+    <field name="metodo" type="string" column="metodo" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">nombre del método o función donde se capturó la excepción</option>
+      </options>
+    </field>
+    <field name="mensaje" type="string" column="mensaje" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">el mensaje de la excepción</option>
+      </options>
+    </field>
+    <field name="tipoexcepcion" type="string" column="tipoexcepcion" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">el tipo o la clase de excepcion</option>
+      </options>
+    </field>
+    <field name="pila" type="text" column="pila" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">la pila o el stack de la excepción</option>
+      </options>
+    </field>
+    <field name="origen" type="string" column="origen" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">el origen de la excepción:&#13;
+&#13;
+- web&#13;
+- móvil</option>
+      </options>
+    </field>
+    <field name="creacionexcepcion" type="datetime" column="creacionexcepcion" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

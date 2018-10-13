@@ -1,0 +1,47 @@
+ModeloBundle\Entity\Tplazatiporecaudo:
+    type: entity
+    table: tplazatiporecaudo
+    indexes:
+        fki_fkplazatiporecaudop:
+            columns:
+                - fkidplaza
+        fki_fkplazatiporecaudot:
+            columns:
+                - fkidtiporecaudo
+    id:
+        pkidplazatiporecaudo:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        creacionplazatiporecaudo:
+            type: datetime
+            nullable: false
+            options:
+                default: now()
+    manyToOne:
+        fkidplaza:
+            targetEntity: Tplaza
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fkidplaza:
+                    referencedColumnName: pkidplaza
+            orphanRemoval: false
+        fkidtiporecaudo:
+            targetEntity: Ttiporecaudo
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fkidtiporecaudo:
+                    referencedColumnName: pkidtiporecaudo
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

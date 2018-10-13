@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Tplazatipovehiculo" table="tplazatipovehiculo">
+    <indexes>
+      <index name="idx_tplazatipovehiculo_fkidtipovehiculo" columns="fkidtipovehiculo"/>
+      <index name="idx_tplazatipovehiculo_fkidplaza" columns="fkidplaza"/>
+    </indexes>
+    <id name="pktipovehiculoplaza" type="integer" column="pktipovehiculoplaza">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="tplazatipovehiculo_pktipovehiculoplaza_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="creaciontipovehiculoplaza" type="datetime" column="creaciontipovehiculoplaza" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <many-to-one field="fkidtipovehiculo" target-entity="Ttipovehiculo" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidtipovehiculo" referenced-column-name="pkidtipovehiculo"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidplaza" target-entity="Tplaza" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidplaza" referenced-column-name="pkidplaza"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

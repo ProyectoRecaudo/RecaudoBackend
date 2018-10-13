@@ -1,0 +1,82 @@
+ModeloBundle\Entity\Tsector:
+    type: entity
+    table: tsector
+    indexes:
+        fki_fkzonasector:
+            columns:
+                - fkidzona
+        fki_fkplazasector:
+            columns:
+                - fkidplaza
+        fki_fktiposectorsector:
+            columns:
+                - fkidtiposector
+    id:
+        pkidsector:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        codigosector:
+            type: string
+            nullable: true
+            length: 225
+            options:
+                fixed: false
+        nombresector:
+            type: string
+            nullable: false
+            length: 225
+            options:
+                fixed: false
+        sectoractivo:
+            type: boolean
+            nullable: false
+            options:
+                default: true
+        creacionsector:
+            type: datetime
+            nullable: false
+            options:
+                default: now()
+        modificacionsector:
+            type: datetime
+            nullable: false
+            options:
+                default: now()
+    manyToOne:
+        fkidplaza:
+            targetEntity: Tplaza
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fkidplaza:
+                    referencedColumnName: pkidplaza
+            orphanRemoval: false
+        fkidtiposector:
+            targetEntity: Ttiposector
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fkidtiposector:
+                    referencedColumnName: pkidtiposector
+            orphanRemoval: false
+        fkidzona:
+            targetEntity: Tzona
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fkidzona:
+                    referencedColumnName: pkidzona
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

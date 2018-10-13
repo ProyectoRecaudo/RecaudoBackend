@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Trecibovehiculo0" table="trecibovehiculo_0">
+    <indexes>
+      <index name="idx_trecibovehiculo_fkidtarifavehiculo_0" columns="fkidtarifavehiculo"/>
+    </indexes>
+    <id name="pkidrecibovehiculo" type="integer" column="pkidrecibovehiculo">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="trecibovehiculo_0_pkidrecibovehiculo_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="numerorecibovehiculo" type="string" column="numerorecibovehiculo" length="225" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="mesrecibovehiculo" type="string" column="mesrecibovehiculo" length="225" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="numeroplaca" type="string" column="numeroplaca" length="225" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="valorecibovehiculo" type="float" column="valorecibovehiculo" precision="10" scale="0" nullable="false"/>
+    <field name="creacionrecibovehiculo" type="datetime" column="creacionrecibovehiculo" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="modificacionrecibovehiculo" type="datetime" column="modificacionrecibovehiculo" nullable="false"/>
+    <field name="fkidtarifavehiculo" type="integer" column="fkidtarifavehiculo" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

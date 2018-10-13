@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Testadoinfraestructura" table="testadoinfraestructura">
+    <id name="pkidestadoinfraestructura" type="integer" column="pkidestadoinfraestructura">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="testadoinfraestructura_pkidestadoinfraestructura_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="codigoestadoinfraestructura" type="string" column="codigoestadoinfraestructura" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nombreestadoinfraestructura" type="string" column="nombreestadoinfraestructura" length="225" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="descripcionestadoinfraestructura" type="string" column="descripcionestadoinfraestructura" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="estadoinfraestructuraactivo" type="boolean" column="estadoinfraestructuraactivo" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="creacionestadoinfraestructura" type="datetime" column="creacionestadoinfraestructura" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="modificacionestadoinfraestructura" type="datetime" column="modificacionestadoinfraestructura" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

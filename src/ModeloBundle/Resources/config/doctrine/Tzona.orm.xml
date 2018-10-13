@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Tzona" table="tzona">
+    <indexes>
+      <index name="fki_fkzonausuario" columns="fkidusuario"/>
+      <index name="fki_fkzonaplaza" columns="fkidplaza"/>
+    </indexes>
+    <id name="pkidzona" type="integer" column="pkidzona">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="tzona_pkidzona_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="codigozona" type="string" column="codigozona" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nombrezona" type="string" column="nombrezona" length="225" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="zonaactivo" type="boolean" column="zonaactivo" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="creacionzona" type="datetime" column="creacionzona" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="modificacionzona" type="datetime" column="modificacionzona" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <many-to-one field="fkidplaza" target-entity="Tplaza" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidplaza" referenced-column-name="pkidplaza"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidusuario" target-entity="Tusuario" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidusuario" referenced-column-name="pkidusuario"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

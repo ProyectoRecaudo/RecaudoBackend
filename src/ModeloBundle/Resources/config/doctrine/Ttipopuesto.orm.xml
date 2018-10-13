@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Ttipopuesto" table="ttipopuesto">
+    <id name="pkidtipopuesto" type="integer" column="pkidtipopuesto">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="ttipopuesto_pkidtipopuesto_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="codigotipopuesto" type="string" column="codigotipopuesto" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nombretipopuesto" type="string" column="nombretipopuesto" length="225" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="descripciontipopuesto" type="string" column="descripciontipopuesto" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="tipopuestoactivo" type="boolean" column="tipopuestoactivo" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="creaciontipopuesto" type="datetime" column="creaciontipopuesto" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="modificaciontipopuesto" type="datetime" column="modificaciontipopuesto" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

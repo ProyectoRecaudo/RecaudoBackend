@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Tplazatiporecaudo" table="tplazatiporecaudo">
+    <indexes>
+      <index name="fki_fkplazatiporecaudot" columns="fkidtiporecaudo"/>
+      <index name="fki_fkplazatiporecaudop" columns="fkidplaza"/>
+    </indexes>
+    <id name="pkidplazatiporecaudo" type="integer" column="pkidplazatiporecaudo">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="tplazatiporecaudo_pkidplazatiporecaudo_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="creacionplazatiporecaudo" type="datetime" column="creacionplazatiporecaudo" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <many-to-one field="fkidplaza" target-entity="Tplaza" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidplaza" referenced-column-name="pkidplaza"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidtiporecaudo" target-entity="Ttiporecaudo" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidtiporecaudo" referenced-column-name="pkidtiporecaudo"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

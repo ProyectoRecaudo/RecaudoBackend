@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Tusuario" table="tusuario">
+    <indexes>
+      <index name="fki_fkusuariorol" columns="fkidrol"/>
+    </indexes>
+    <id name="pkidusuario" type="integer" column="pkidusuario">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="tusuario_pkidusuario_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="codigousuario" type="string" column="codigousuario" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="identificacion" type="integer" column="identificacion" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="nombreusuario" type="string" column="nombreusuario" length="225" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="apellido" type="string" column="apellido" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="usuarioactivo" type="boolean" column="usuarioactivo" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="creacionusuario" type="datetime" column="creacionusuario" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="modificacionusuario" type="datetime" column="modificacionusuario" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="contrasenia" type="string" column="contrasenia" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="rutaimagen" type="string" column="rutaimagen" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="numerorecibo" type="integer" column="numerorecibo" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <many-to-one field="fkidrol" target-entity="Trol" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidrol" referenced-column-name="pkidrol"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,47 @@
+ModeloBundle\Entity\Trolmodulo:
+    type: entity
+    table: trolmodulo
+    indexes:
+        fki_fkrolrolmodulo:
+            columns:
+                - fkidrol
+        fki_fkmodulorolmodulo:
+            columns:
+                - fkidmodulo
+    id:
+        pkidrolmodulo:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        creacionrolmodulo:
+            type: datetime
+            nullable: false
+            options:
+                default: now()
+    manyToOne:
+        fkidmodulo:
+            targetEntity: Tmodulo
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fkidmodulo:
+                    referencedColumnName: pkidmodulo
+            orphanRemoval: false
+        fkidrol:
+            targetEntity: Trol
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fkidrol:
+                    referencedColumnName: pkidrol
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

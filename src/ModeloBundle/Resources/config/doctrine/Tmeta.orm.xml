@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Tmeta" table="tmeta">
+    <indexes>
+      <index name="fki_tmeta_tsector" columns="fkidsector"/>
+    </indexes>
+    <id name="pkidmeta" type="integer" column="pkidmeta">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="tmeta_pkidmeta_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="totaltarifapuesto" type="float" column="totaltarifapuesto" precision="10" scale="0" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="totalsaldodeuda" type="float" column="totalsaldodeuda" precision="10" scale="0" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="totalcuotaacuerdo" type="float" column="totalcuotaacuerdo" precision="10" scale="0" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="totalsaldodeudaacuerdo" type="float" column="totalsaldodeudaacuerdo" precision="10" scale="0" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="totalsaldomultas" type="float" column="totalsaldomultas" precision="10" scale="0" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="mesletras" type="string" column="mesletras" length="225" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="creacionmeta" type="datetime" column="creacionmeta" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="modificacionmeta" type="datetime" column="modificacionmeta" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="totalvalorpuestoeventual" type="float" column="totalvalorpuestoeventual" precision="10" scale="0" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="metaactivo" type="boolean" column="metaactivo" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="mesnumero" type="integer" column="mesnumero" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <many-to-one field="fkidsector" target-entity="Tsector" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidsector" referenced-column-name="pkidsector"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

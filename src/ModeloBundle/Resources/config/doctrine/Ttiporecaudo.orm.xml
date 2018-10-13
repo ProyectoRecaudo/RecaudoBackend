@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Ttiporecaudo" table="ttiporecaudo">
+    <id name="pkidtiporecaudo" type="integer" column="pkidtiporecaudo">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="ttiporecaudo_pkidtiporecaudo_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="codigotiporecaudo" type="string" column="codigotiporecaudo" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nombretiporecaudo" type="string" column="nombretiporecaudo" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="tiporecaudoactivo" type="boolean" column="tiporecaudoactivo" nullable="false"/>
+    <field name="creaciontiporecaudo" type="datetime" column="creaciontiporecaudo" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="modificaciontiporecaudo" type="datetime" column="modificaciontiporecaudo" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

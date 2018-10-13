@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Tespecieanimal" table="tespecieanimal">
+    <indexes>
+      <index name="idx_tespecieanimal_fkidtipoanimal" columns="fkidtipoanimal"/>
+    </indexes>
+    <id name="pkidespecieanimal" type="integer" column="pkidespecieanimal">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="tespecieanimal_pkidespecieanimal_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="codigoespecieanimal" type="string" column="codigoespecieanimal" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nombreespecieanimal" type="string" column="nombreespecieanimal" length="225" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="especieanimalactivo" type="boolean" column="especieanimalactivo" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="creacionespecieanimal" type="datetime" column="creacionespecieanimal" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="modificacionespecieanimal" type="datetime" column="modificacionespecieanimal" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <many-to-one field="fkidtipoanimal" target-entity="Ttipoanimal" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidtipoanimal" referenced-column-name="pkidtipoanimal"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

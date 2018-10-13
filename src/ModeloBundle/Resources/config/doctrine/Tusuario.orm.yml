@@ -1,0 +1,79 @@
+ModeloBundle\Entity\Tusuario:
+    type: entity
+    table: tusuario
+    indexes:
+        fki_fkusuariorol:
+            columns:
+                - fkidrol
+    id:
+        pkidusuario:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        codigousuario:
+            type: string
+            nullable: true
+            length: 225
+            options:
+                fixed: false
+        identificacion:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+        nombreusuario:
+            type: string
+            nullable: false
+            length: 225
+            options:
+                fixed: false
+        apellido:
+            type: string
+            nullable: true
+            length: 225
+            options:
+                fixed: false
+        usuarioactivo:
+            type: boolean
+            nullable: false
+            options:
+                default: true
+        creacionusuario:
+            type: datetime
+            nullable: false
+            options:
+                default: now()
+        modificacionusuario:
+            type: datetime
+            nullable: false
+            options:
+                default: now()
+        contrasenia:
+            type: string
+            nullable: true
+            length: 225
+            options:
+                fixed: true
+        rutaimagen:
+            type: string
+            nullable: true
+            length: 225
+            options:
+                fixed: false
+    manyToOne:
+        fkidrol:
+            targetEntity: Trol
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fkidrol:
+                    referencedColumnName: pkidrol
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

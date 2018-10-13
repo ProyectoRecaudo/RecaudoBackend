@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Ttipobeneficiario" table="ttipobeneficiario">
+    <id name="pkidtipobeneficiario" type="integer" column="pkidtipobeneficiario">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="ttipobeneficiario_pkidtipobeneficiario_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="codigotipobeneficiario" type="string" column="codigotipobeneficiario" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nombretipobeneficiario" type="string" column="nombretipobeneficiario" length="225" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="descripciontipobeneficiario" type="string" column="descripciontipobeneficiario" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="tipobeneficiarioactivo" type="boolean" column="tipobeneficiarioactivo" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="creaciontipobeneficiario" type="datetime" column="creaciontipobeneficiario" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="modificaciontipobeneficiario" type="datetime" column="modificaciontipobeneficiario" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

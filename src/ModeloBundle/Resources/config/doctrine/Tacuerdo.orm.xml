@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Tacuerdo" table="tacuerdo">
+    <indexes>
+      <index name="fki_tacuerdo_tproceso" columns="fkidproceso"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="unq_tacuerdo_pkidacuerdo" columns="pkidacuerdo"/>
+    </unique-constraints>
+    <id name="pkidacuerdo" type="integer" column="pkidacuerdo">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="tacuerdo_pkidacuerdo_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="resolucionacuerdo" type="string" column="resolucionacuerdo" length="225" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="documentoacuerdo" type="text" column="documentoacuerdo" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="acuerdoactivo" type="boolean" column="acuerdoactivo" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="numerocuotas" type="integer" column="numerocuotas" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="valoracuerdo" type="float" column="valoracuerdo" precision="10" scale="0" nullable="false"/>
+    <field name="valorcuotainicial" type="float" column="valorcuotainicial" precision="10" scale="0" nullable="false"/>
+    <field name="valorcuotamensual" type="float" column="valorcuotamensual" precision="10" scale="0" nullable="false"/>
+    <field name="saldoacuerdo" type="float" column="saldoacuerdo" precision="10" scale="0" nullable="false"/>
+    <field name="saldodeudaacuerdo" type="float" column="saldodeudaacuerdo" precision="10" scale="0" nullable="false"/>
+    <field name="cuotasincumplidas" type="integer" column="cuotasincumplidas" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="creacionacuerdo" type="datetime" column="creacionacuerdo" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="modificacionacuerdo" type="datetime" column="modificacionacuerdo" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="numeroacuerdo" type="string" column="numeroacuerdo" length="225" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="cuotaspagadas" type="integer" column="cuotaspagadas" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="fechapagototal" type="datetime" column="fechapagototal" nullable="true"/>
+    <many-to-one field="fkidproceso" target-entity="Tproceso" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidproceso" referenced-column-name="pkidproceso"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

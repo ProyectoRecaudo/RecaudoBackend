@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Tbeneficiario" table="tbeneficiario">
+    <id name="pkidbeneficiario" type="integer" column="pkidbeneficiario">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="tbeneficiario_pkidbeneficiario_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="codigobeneficiario" type="string" column="codigobeneficiario" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nombrebeneficiario" type="string" column="nombrebeneficiario" length="225" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="identificacionbeneficiario" type="string" column="identificacionbeneficiario" length="225" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="generobeneficiario" type="string" column="generobeneficiario" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="edadbeneficiario" type="integer" column="edadbeneficiario" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="direccionbeneficiario" type="string" column="direccionbeneficiario" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="telefonobeneficiario" type="integer" column="telefonobeneficiario" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="observaciones" type="text" column="observaciones" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="beneficiarioactivo" type="boolean" column="beneficiarioactivo" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="creacionbeneficiario" type="datetime" column="creacionbeneficiario" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="modificacionbeneficiario" type="datetime" column="modificacionbeneficiario" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

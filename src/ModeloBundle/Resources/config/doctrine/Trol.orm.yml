@@ -1,0 +1,53 @@
+ModeloBundle\Entity\Trol:
+    type: entity
+    table: trol
+    id:
+        pkidrol:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        codigorol:
+            type: string
+            nullable: true
+            length: 225
+            options:
+                fixed: false
+        nombrerol:
+            type: string
+            nullable: false
+            length: 225
+            options:
+                fixed: false
+        rolactivo:
+            type: boolean
+            nullable: false
+            options:
+                default: true
+        descripcionrol:
+            type: string
+            nullable: true
+            length: 225
+            options:
+                fixed: false
+        creacionrol:
+            type: datetime
+            nullable: false
+            options:
+                default: now()
+        modificacionrol:
+            type: datetime
+            nullable: false
+            options:
+                default: now()
+        permiso:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+    lifecycleCallbacks: {  }

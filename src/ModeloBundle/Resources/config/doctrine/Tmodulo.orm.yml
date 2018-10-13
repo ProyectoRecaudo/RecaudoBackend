@@ -1,0 +1,37 @@
+ModeloBundle\Entity\Tmodulo:
+    type: entity
+    table: tmodulo
+    id:
+        pkidmodulo:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        nombremodulo:
+            type: string
+            nullable: false
+            length: 225
+            options:
+                fixed: false
+        moduloactivo:
+            type: boolean
+            nullable: false
+            options:
+                default: true
+        icono:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: true
+        nombrepermiso:
+            type: string
+            nullable: true
+            length: 225
+            options:
+                fixed: false
+    lifecycleCallbacks: {  }

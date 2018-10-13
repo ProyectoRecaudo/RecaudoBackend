@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Tasignacionpuesto" table="tasignacionpuesto">
+    <indexes>
+      <index name="idx_tasignacionpuesto_fkidbeneficiario" columns="fkidbeneficiario"/>
+      <index name="idx_tasignacionpuesto_fkidpuesto" columns="fkidpuesto"/>
+    </indexes>
+    <id name="pkidasignacionpuesto" type="integer" column="pkidasignacionpuesto">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="tasignacionpuesto_pkidasignacionpuesto_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="numeroresolucionasignacionpuesto" type="string" column="numeroresolucionasignacionpuesto" length="225" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="rutaresolucionasignacionpuesto" type="text" column="rutaresolucionasignacionpuesto" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="estadoasignacionpuesto" type="string" column="estadoasignacionpuesto" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="asignacionpuestoactivo" type="boolean" column="asignacionpuestoactivo" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="saldodeuda" type="float" column="saldodeuda" precision="10" scale="0" nullable="true"/>
+    <field name="creacionasignacionpuesto" type="datetime" column="creacionasignacionpuesto" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="modificacionasignacionpuesto" type="datetime" column="modificacionasignacionpuesto" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="saldo" type="float" column="saldo" precision="10" scale="0" nullable="true"/>
+    <field name="concobro" type="string" column="concobro" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default">Ninguno</option>
+      </options>
+    </field>
+    <field name="valorincrementoporcentual" type="float" column="valorincrementoporcentual" precision="10" scale="0" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="valortarifapuesto" type="float" column="valortarifapuesto" precision="10" scale="0" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="saldofavor" type="float" column="saldofavor" precision="10" scale="0" nullable="true"/>
+    <many-to-one field="fkidbeneficiario" target-entity="Tbeneficiario" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidbeneficiario" referenced-column-name="pkidbeneficiario"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidpuesto" target-entity="Tpuesto" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidpuesto" referenced-column-name="pkidpuesto"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

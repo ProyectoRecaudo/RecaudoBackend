@@ -1,0 +1,39 @@
+ModeloBundle\Entity\Ttiporecaudo:
+    type: entity
+    table: ttiporecaudo
+    id:
+        pkidtiporecaudo:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        codigotiporecaudo:
+            type: string
+            nullable: true
+            length: 225
+            options:
+                fixed: false
+        nombretiporecaudo:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        tiporecaudoactivo:
+            type: boolean
+            nullable: false
+        creaciontiporecaudo:
+            type: datetime
+            nullable: false
+            options:
+                default: now()
+        modificaciontiporecaudo:
+            type: datetime
+            nullable: false
+            options:
+                default: now()
+    lifecycleCallbacks: {  }

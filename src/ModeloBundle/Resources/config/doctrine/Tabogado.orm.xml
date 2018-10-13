@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Tabogado" table="tabogado">
+    <id name="pkidabogado" type="integer" column="pkidabogado">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="tabogado_pkidabogado_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="codigoabogado" type="string" column="codigoabogado" length="225" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nombreabogado" type="string" column="nombreabogado" length="225" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="direccionabogado" type="string" column="direccionabogado" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="telefonoabogado" type="integer" column="telefonoabogado" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="abogadoactivo" type="boolean" column="abogadoactivo" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="creacionabogado" type="datetime" column="creacionabogado" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="modificacionabogado" type="datetime" column="modificacionabogado" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

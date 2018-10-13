@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Ttarifapuesto" table="ttarifapuesto">
+    <indexes>
+      <index name="fki_ttarifapuesto_tplaza" columns="fkidplaza"/>
+    </indexes>
+    <id name="pkidtarifapuesto" type="integer" column="pkidtarifapuesto">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="ttarifapuesto_pkidtarifapuesto_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="valortarifapuesto" type="float" column="valortarifapuesto" precision="10" scale="0" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="creaciontarifapuesto" type="datetime" column="creaciontarifapuesto" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="modificaciontarifapuesto" type="datetime" column="modificaciontarifapuesto" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="numeroresoluciontarifapuesto" type="string" column="numeroresoluciontarifapuesto" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="documentoresoluciontarifapuesto" type="text" column="documentoresoluciontarifapuesto" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="tarifapuestoactivo" type="boolean" column="tarifapuestoactivo" nullable="true">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="valorincrementoporcentual" type="float" column="valorincrementoporcentual" precision="10" scale="0" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <many-to-one field="fkidplaza" target-entity="Tplaza" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidplaza" referenced-column-name="pkidplaza"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

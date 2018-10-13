@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Tcierremes" table="tcierremes">
+    <indexes>
+      <index name="fki_tcierremes_tsector" columns="fkisector"/>
+      <index name="fki_tcierremes_tplaza" columns="fkidplaza"/>
+      <index name="fki_tcierremes_tusuario" columns="fkidusuariorecaudador"/>
+    </indexes>
+    <id name="pkidcierremes" type="integer" column="pkidcierremes">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="tcierremes_pkidcierremes_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="recaudototalacuerdo" type="float" column="recaudototalacuerdo" precision="10" scale="0" nullable="true"/>
+    <field name="recaudocuotaacuerdo" type="float" column="recaudocuotaacuerdo" precision="10" scale="0" nullable="true"/>
+    <field name="recaudodeudaacuerdo" type="float" column="recaudodeudaacuerdo" precision="10" scale="0" nullable="true"/>
+    <field name="recaudodeuda" type="float" column="recaudodeuda" precision="10" scale="0" nullable="true"/>
+    <field name="recaudomultas" type="float" column="recaudomultas" precision="10" scale="0" nullable="true"/>
+    <field name="recaudocuotames" type="float" column="recaudocuotames" precision="10" scale="0" nullable="true"/>
+    <field name="recaudoanimales" type="float" column="recaudoanimales" precision="10" scale="0" nullable="true"/>
+    <field name="recaudopesaje" type="float" column="recaudopesaje" precision="10" scale="0" nullable="true"/>
+    <field name="recaudovehiculos" type="float" column="recaudovehiculos" precision="10" scale="0" nullable="true"/>
+    <field name="recaudoparqueaderos" type="float" column="recaudoparqueaderos" precision="10" scale="0" nullable="true"/>
+    <field name="recaudoeventuales" type="float" column="recaudoeventuales" precision="10" scale="0" nullable="true"/>
+    <field name="mes" type="integer" column="mes" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="mesletras" type="string" column="mesletras" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="year" type="integer" column="year" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="identificacionrecaudador" type="string" column="identificacionrecaudador" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nombrerecaudador" type="string" column="nombrerecaudador" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="apellidorecaudador" type="string" column="apellidorecaudador" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="creacioncierremes" type="datetime" column="creacioncierremes" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="modificacioncierremes" type="datetime" column="modificacioncierremes" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <many-to-one field="fkidplaza" target-entity="Tplaza" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidplaza" referenced-column-name="pkidplaza"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidusuariorecaudador" target-entity="Tusuario" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidusuariorecaudador" referenced-column-name="pkidusuario"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkisector" target-entity="Tsector" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkisector" referenced-column-name="pkidsector"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

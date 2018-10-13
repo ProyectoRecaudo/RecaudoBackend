@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Trolmodulo" table="trolmodulo">
+    <indexes>
+      <index name="fki_fkrolrolmodulo" columns="fkidrol"/>
+      <index name="fki_fkmodulorolmodulo" columns="fkidmodulo"/>
+    </indexes>
+    <id name="pkidrolmodulo" type="integer" column="pkidrolmodulo">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="trolmodulo_pkidrolmodulo_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="creacionrolmodulo" type="datetime" column="creacionrolmodulo" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <many-to-one field="fkidmodulo" target-entity="Tmodulo" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidmodulo" referenced-column-name="pkidmodulo"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidrol" target-entity="Trol" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidrol" referenced-column-name="pkidrol"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

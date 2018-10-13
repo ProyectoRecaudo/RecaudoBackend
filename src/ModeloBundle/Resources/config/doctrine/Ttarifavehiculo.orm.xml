@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Ttarifavehiculo" table="ttarifavehiculo">
+    <indexes>
+      <index name="idx_ttarifavehiculo_fkidplaza" columns="fkidplaza"/>
+      <index name="idx_ttarifavehiculo_fkidtipovehiculo" columns="fkidtipovehiculo"/>
+    </indexes>
+    <id name="pkidtarifavehiculo" type="integer" column="pkidtarifavehiculo">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="ttarifavehiculo_pkidtarifavehiculo_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="valortarifavehiculo" type="float" column="valortarifavehiculo" precision="10" scale="0" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="descripciontarifavehiculo" type="string" column="descripciontarifavehiculo" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="craciontarifavehiculo" type="datetime" column="craciontarifavehiculo" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="modificaciontarifavehiculo" type="datetime" column="modificaciontarifavehiculo" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="numeroresoluciontarifavehiculo" type="string" column="numeroresoluciontarifavehiculo" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="documentoresoluciontarifavehiculo" type="text" column="documentoresoluciontarifavehiculo" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="tarifavehiculoactivo" type="boolean" column="tarifavehiculoactivo" nullable="true">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="valorincrementoporcentual" type="float" column="valorincrementoporcentual" precision="10" scale="0" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="fechainicio" type="datetime" column="fechainicio" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="fechafin" type="datetime" column="fechafin" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <many-to-one field="fkidtipovehiculo" target-entity="Ttipovehiculo" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidtipovehiculo" referenced-column-name="pkidtipovehiculo"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidplaza" target-entity="Tplaza" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidplaza" referenced-column-name="pkidplaza"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

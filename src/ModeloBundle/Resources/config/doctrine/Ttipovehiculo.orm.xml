@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Ttipovehiculo" table="ttipovehiculo">
+    <id name="pkidtipovehiculo" type="integer" column="pkidtipovehiculo">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="ttipovehiculo_pkidtipovehiculo_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="codigotipovehiculo" type="string" column="codigotipovehiculo" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nombretipovehiculo" type="string" column="nombretipovehiculo" length="225" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="descripciontipovehiculo" type="string" column="descripciontipovehiculo" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="creaciontipovehiculo" type="datetime" column="creaciontipovehiculo" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="modificaciontipovehiculo" type="datetime" column="modificaciontipovehiculo" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="tipovehiculoactivo" type="boolean" column="tipovehiculoactivo" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

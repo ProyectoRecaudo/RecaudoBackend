@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Ttarifaparqueadero" table="ttarifaparqueadero">
+    <indexes>
+      <index name="fki_ttarifaparqueadero_ttipoparqueadero" columns="fkidtipoparqueadero"/>
+      <index name="fki_ttarifaparqueadero_tplaza" columns="fkidplaza"/>
+    </indexes>
+    <id name="pkidtarifaparqueadero" type="integer" column="pkidtarifaparqueadero">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="ttarifaparqueadero_pkidtarifaparqueadero_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="valortarifaparqueadero" type="float" column="valortarifaparqueadero" precision="10" scale="0" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="descripciontarifaparqueadero" type="string" column="descripciontarifaparqueadero" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="numeroresoluciontarifaparqueadero" type="string" column="numeroresoluciontarifaparqueadero" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="documentoresoluciontarifaparqueadero" type="text" column="documentoresoluciontarifaparqueadero" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="craciontarifaparqueadero" type="datetime" column="craciontarifaparqueadero" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="modificaciontarifaparqueadero" type="datetime" column="modificaciontarifaparqueadero" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="tarifaparqueaderoactivo" type="boolean" column="tarifaparqueaderoactivo" nullable="true">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="valorincrementoporcentual" type="float" column="valorincrementoporcentual" precision="10" scale="0" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="fechainicio" type="datetime" column="fechainicio" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="fechafin" type="datetime" column="fechafin" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <many-to-one field="fkidplaza" target-entity="Tplaza" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidplaza" referenced-column-name="pkidplaza"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidtipoparqueadero" target-entity="Ttipoparqueadero" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidtipoparqueadero" referenced-column-name="pkidtipoparqueadero"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

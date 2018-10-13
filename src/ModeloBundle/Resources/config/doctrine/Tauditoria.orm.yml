@@ -1,0 +1,72 @@
+ModeloBundle\Entity\Tauditoria:
+    type: entity
+    table: tauditoria
+    id:
+        pkidauditoria:
+            type: bigint
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        fkidusuario:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        nombreusuario:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+                comment: 'debe contener el nombre completo del usuario (nombres y apellidos)'
+        identificacionusuario:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+                comment: 'número de identificación'
+        tabla:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+                comment: 'el nombre de la tabla que se afectó con la acción sin el prefijo (ej. si se afectó tusuario debe decir usuario)'
+        valoresrelevantes:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+                comment: "se deben regitrar el o los valores relevantes de cada tabla siempre que se haga una acción, por ejemplo, de la tabla tusuario los relevantes son identifación y su nombre.\r\n\r\nla sintaxis es: campo1: valor1; campo2: valor2;\r\nej. identificacón: 485425200; nombre: fulanito pérez;"
+        accion:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+                comment: "la acción u operación es aquella que se realiza y afecta a la tabla, las  posibles operaciones son:\r\n\r\n- creación\r\n- edición\r\n- eliminación"
+        creacionauditoria:
+            type: datetime
+            nullable: false
+            options:
+                default: now()
+        pkidelemento:
+            type: bigint
+            nullable: true
+            options:
+                unsigned: false
+                comment: 'el id del elemento afectado'
+        origenauditoria:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+                comment: "el origen puede ser:\r\n\r\n- web\r\n- móvil"
+    lifecycleCallbacks: {  }

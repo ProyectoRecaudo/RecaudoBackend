@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Tsector" table="tsector">
+    <indexes>
+      <index name="fki_fktiposectorsector" columns="fkidtiposector"/>
+      <index name="fki_fkzonasector" columns="fkidzona"/>
+    </indexes>
+    <id name="pkidsector" type="integer" column="pkidsector">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="tsector_pkidsector_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="codigosector" type="string" column="codigosector" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nombresector" type="string" column="nombresector" length="225" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="sectoractivo" type="boolean" column="sectoractivo" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="creacionsector" type="datetime" column="creacionsector" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="modificacionsector" type="datetime" column="modificacionsector" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <many-to-one field="fkidtiposector" target-entity="Ttiposector" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidtiposector" referenced-column-name="pkidtiposector"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidzona" target-entity="Tzona" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidzona" referenced-column-name="pkidzona"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

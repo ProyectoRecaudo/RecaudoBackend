@@ -1,0 +1,41 @@
+ModeloBundle\Entity\Tplaza:
+    type: entity
+    table: tplaza
+    id:
+        pkidplaza:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        codigoplaza:
+            type: string
+            nullable: true
+            length: 225
+            options:
+                fixed: false
+        nombreplaza:
+            type: string
+            nullable: false
+            length: 225
+            options:
+                fixed: false
+        plazaactivo:
+            type: boolean
+            nullable: false
+            options:
+                default: true
+        creacionplaza:
+            type: datetime
+            nullable: false
+            options:
+                default: now()
+        modificacionplaza:
+            type: datetime
+            nullable: false
+            options:
+                default: now()
+    lifecycleCallbacks: {  }

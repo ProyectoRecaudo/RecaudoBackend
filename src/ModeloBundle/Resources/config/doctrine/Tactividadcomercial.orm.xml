@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Tactividadcomercial" table="tactividadcomercial">
+    <id name="pkidactividadcomercial" type="integer" column="pkidactividadcomercial">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="tactividadcomercial_pkidactividadcomercial_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="codigoactividadcomercial" type="string" column="codigoactividadcomercial" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nombreactividadcomercial" type="string" column="nombreactividadcomercial" length="225" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="descripcionactividadcomercial" type="string" column="descripcionactividadcomercial" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="actividadcomercialactivo" type="boolean" column="actividadcomercialactivo" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="creacionactividadcomercial" type="datetime" column="creacionactividadcomercial" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="modificacionactividadcomercial" type="datetime" column="modificacionactividadcomercial" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

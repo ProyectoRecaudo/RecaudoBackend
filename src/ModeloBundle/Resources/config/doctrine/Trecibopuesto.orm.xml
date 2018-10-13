@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Trecibopuesto" table="trecibopuesto">
+    <indexes>
+      <index name="fki_trecibopuesto_tacuerdo" columns="fkidacuerdo"/>
+      <index name="fki_trecibopuesto_tzona" columns="fkidzona"/>
+      <index name="fki_trecibopuesto_tplaza" columns="fkidplaza"/>
+      <index name="idx_trecibopuesto_fkidfactura" columns="fkidfactura"/>
+      <index name="fki_trecibopuesto_tasignacionpuesto" columns="fkidasignacionpuesto"/>
+      <index name="fki_trecibopuesto_tpuesto" columns="fkidpuesto"/>
+      <index name="fki_trecibopuesto_fktusuario" columns="fkidusuariorecaudador"/>
+      <index name="fki_trecibopuesto_tsector" columns="fkidsector"/>
+      <index name="fki_trecibopuesto_tbeneficiario" columns="fkidbeneficiario"/>
+    </indexes>
+    <id name="pkidrecibopuesto" type="integer" column="pkidrecibopuesto">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="trecibopuesto_pkidrecibopuesto_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="numerofactura" type="string" column="numerofactura" length="225" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nombrebeneficiario" type="string" column="nombrebeneficiario" length="225" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="identificacionbeneficiario" type="string" column="identificacionbeneficiario" length="225" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="saldo" type="float" column="saldo" precision="10" scale="0" nullable="false"/>
+    <field name="numeroacuerdo" type="string" column="numeroacuerdo" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="valorcuotaacuerdo" type="float" column="valorcuotaacuerdo" precision="10" scale="0" nullable="true"/>
+    <field name="valormultas" type="float" column="valormultas" precision="10" scale="0" nullable="true"/>
+    <field name="valorinteres" type="float" column="valorinteres" precision="10" scale="0" nullable="true"/>
+    <field name="mesfactura" type="string" column="mesfactura" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="creacionrecibo" type="datetime" column="creacionrecibo" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="modificacionrecibo" type="datetime" column="modificacionrecibo" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="numerorecibo" type="string" column="numerorecibo" length="225" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nombreterceropuesto" type="string" column="nombreterceropuesto" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="identificacionterceropuesto" type="string" column="identificacionterceropuesto" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nombreplaza" type="string" column="nombreplaza" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="recibopuestoactivo" type="boolean" column="recibopuestoactivo" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="numeroresolucionasignacionpuesto" type="string" column="numeroresolucionasignacionpuesto" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="numeropuesto" type="string" column="numeropuesto" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nombresector" type="string" column="nombresector" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="identificacionrecaudador" type="string" column="identificacionrecaudador" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nombrerecaudador" type="string" column="nombrerecaudador" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="apellidorecaudador" type="string" column="apellidorecaudador" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="valorpagado" type="float" column="valorpagado" precision="10" scale="0" nullable="false"/>
+    <field name="saldoporpagar" type="float" column="saldoporpagar" precision="10" scale="0" nullable="true"/>
+    <field name="nombrezona" type="string" column="nombrezona" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="abonototalacuerdo" type="float" column="abonototalacuerdo" precision="10" scale="0" nullable="true"/>
+    <field name="abonocuotaacuerdo" type="float" column="abonocuotaacuerdo" precision="10" scale="0" nullable="true"/>
+    <field name="abonodeudaacuerdo" type="float" column="abonodeudaacuerdo" precision="10" scale="0" nullable="true"/>
+    <field name="abonodeuda" type="float" column="abonodeuda" precision="10" scale="0" nullable="true"/>
+    <field name="abonomultas" type="float" column="abonomultas" precision="10" scale="0" nullable="true"/>
+    <field name="abonocuotames" type="float" column="abonocuotames" precision="10" scale="0" nullable="true"/>
+    <many-to-one field="fkidusuariorecaudador" target-entity="Tusuario" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidusuariorecaudador" referenced-column-name="pkidusuario"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidacuerdo" target-entity="Tacuerdo" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidacuerdo" referenced-column-name="pkidacuerdo"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidasignacionpuesto" target-entity="Tasignacionpuesto" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidasignacionpuesto" referenced-column-name="pkidasignacionpuesto"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidbeneficiario" target-entity="Tbeneficiario" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidbeneficiario" referenced-column-name="pkidbeneficiario"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidfactura" target-entity="Tfactura" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidfactura" referenced-column-name="pkidfactura"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidplaza" target-entity="Tplaza" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidplaza" referenced-column-name="pkidplaza"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidpuesto" target-entity="Tpuesto" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidpuesto" referenced-column-name="pkidpuesto"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidsector" target-entity="Tsector" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidsector" referenced-column-name="pkidsector"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidzona" target-entity="Tzona" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidzona" referenced-column-name="pkidzona"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Tequipo" table="tequipo">
+    <indexes>
+      <index name="idx_tequipo_fkidusuario" columns="fkidusuario"/>
+    </indexes>
+    <id name="pkidequipo" type="integer" column="pkidequipo">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="tequipo_pkidequipo_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="codigoequipo" type="string" column="codigoequipo" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nombrequipo" type="string" column="nombrequipo" length="225" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="descripcionequipo" type="string" column="descripcionequipo" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="identificacionequipo" type="string" column="identificacionequipo" length="225" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="equipoactivo" type="boolean" column="equipoactivo" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="creacionequipo" type="datetime" column="creacionequipo" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="modificacionequipo" type="datetime" column="modificacionequipo" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <many-to-one field="fkidusuario" target-entity="Tusuario" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidusuario" referenced-column-name="pkidusuario"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Tasignacionabogado" table="tasignacionabogado">
+    <indexes>
+      <index name="idx_tasignacionabogado_fkidabogado" columns="fkidabogado"/>
+      <index name="idx_tasignacionabogado_fkidproceso" columns="fkidproceso"/>
+    </indexes>
+    <id name="pkidasignacionabogado" type="integer" column="pkidasignacionabogado">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="tasignacionabogado_pkidasignacionabogado_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="documentoasignacionabogado" type="text" column="documentoasignacionabogado" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="asignacionabogadoactivo" type="boolean" column="asignacionabogadoactivo" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="creacionasignacionabogado" type="datetime" column="creacionasignacionabogado" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="modificacionasignacionabogado" type="datetime" column="modificacionasignacionabogado" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="resolucionasignacionabogado" type="string" column="resolucionasignacionabogado" length="225" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="fkidabogado" target-entity="Tabogado" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidabogado" referenced-column-name="pkidabogado"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidproceso" target-entity="Tproceso" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidproceso" referenced-column-name="pkidproceso"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

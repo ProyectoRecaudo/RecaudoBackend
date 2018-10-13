@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ModeloBundle\Entity\Tpuesto" table="tpuesto">
+    <indexes>
+      <index name="fki_tpuesto_ttipopuesto" columns="fkidtipopuesto"/>
+      <index name="idx_tpuesto_fkidactividad" columns="fkidactividadcomercial"/>
+      <index name="idx_tpuesto_fkidestado" columns="fkidestadoinfraestructura"/>
+      <index name="idx_tpuesto_fkidsector" columns="fkidsector"/>
+    </indexes>
+    <id name="pkidpuesto" type="integer" column="pkidpuesto">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="tpuesto_pkidpuesto_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="codigopuesto" type="string" column="codigopuesto" length="225" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="numeropuesto" type="string" column="numeropuesto" length="225" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="alto" type="float" column="alto" precision="10" scale="0" nullable="true"/>
+    <field name="ancho" type="float" column="ancho" precision="10" scale="0" nullable="true"/>
+    <field name="imagenpuesto" type="text" column="imagenpuesto" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="puestoactivo" type="boolean" column="puestoactivo" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="creacionpuesto" type="datetime" column="creacionpuesto" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <field name="modificacionpuesto" type="datetime" column="modificacionpuesto" nullable="false">
+      <options>
+        <option name="default">now()</option>
+      </options>
+    </field>
+    <many-to-one field="fkidestadoinfraestructura" target-entity="Testadoinfraestructura" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidestadoinfraestructura" referenced-column-name="pkidestadoinfraestructura"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidactividadcomercial" target-entity="Tactividadcomercial" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidactividadcomercial" referenced-column-name="pkidactividadcomercial"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidsector" target-entity="Tsector" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidsector" referenced-column-name="pkidsector"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fkidtipopuesto" target-entity="Ttipopuesto" fetch="LAZY">
+      <join-columns>
+        <join-column name="fkidtipopuesto" referenced-column-name="pkidtipopuesto"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>
